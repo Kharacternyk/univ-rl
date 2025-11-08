@@ -163,7 +163,7 @@ if __name__ == "__main__":
     for _ in range(episode_count):
         state = env.reset()[0]
 
-        for _ in range(200):
+        while True:
             position, velocity = state
             discrete_position = discretize_position(
                 position, optimal_policy_table.size(0)
@@ -173,11 +173,11 @@ if __name__ == "__main__":
             )
 
             action = int(optimal_policy_table[discrete_position, discrete_velocity])
-            state, reward, done, *_ = env.step(action)
+            state, reward, terminated, truncated, _ = env.step(action)
 
             total_reward += reward
 
-            if done:
+            if terminated or truncated:
                 break
 
     print("Average reward:", total_reward / episode_count)
