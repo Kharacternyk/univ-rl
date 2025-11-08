@@ -148,15 +148,13 @@ def do_policy_iteration(
 
 
 if __name__ == "__main__":
-    position_discrete_count = 22
-    velocity_discrete_count = 22
     start = time()
     optimal_policy_table = do_policy_iteration(
         100,
         0.01,
         0.72,
-        position_discrete_count,
-        velocity_discrete_count,
+        22,
+        22,
     )
     print(f"Converged in {time() - start:.2f} seconds")
     print()
@@ -178,8 +176,12 @@ if __name__ == "__main__":
 
         for _ in range(200):
             position, velocity = state
-            discrete_position = discretize_position(position, position_discrete_count)
-            discrete_velocity = discretize_velocity(velocity, velocity_discrete_count)
+            discrete_position = discretize_position(
+                position, optimal_policy_table.size(0)
+            )
+            discrete_velocity = discretize_velocity(
+                velocity, optimal_policy_table.size(1)
+            )
 
             action = int(optimal_policy_table[discrete_position, discrete_velocity])
             state, reward, done, *_ = env.step(action)
