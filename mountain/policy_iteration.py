@@ -168,7 +168,7 @@ if __name__ == "__main__":
     print()
 
     env = make("MountainCar-v0")
-    total_reward = 0
+    total_return = 0
     episode_count = 5000
 
     for _ in range(episode_count):
@@ -186,9 +186,9 @@ if __name__ == "__main__":
             action = int(optimal_policy_table[discrete_position, discrete_velocity])
             state, reward, terminated, truncated, _ = env.step(action)
 
-            total_reward += reward
+            total_return += reward
 
             if terminated or truncated:
                 break
 
-    print("Average reward:", total_reward / episode_count)
+    print("Average return:", total_return / episode_count)

@@ -28,7 +28,7 @@ Optimal policy table:
 0000000000002222222222
 0000000000002222220000
 
-Average reward: -111.3224
+Average return: -111.3224
 ```
 
 ### Value Iteration
@@ -61,5 +61,5 @@ Optimal policy table:
 0000000000002222222222
 0000000000002222220000
 
-Average reward: -111.5254
+Average return: -111.5254
 ```
