@@ -175,7 +175,7 @@ if __name__ == "__main__":
                 policy_network_dict = policy_network.state_dict()
 
                 for key in policy_network_dict:
-                    tau = 5e-2
+                    tau = 5e-3
                     target_network_dict[key] = policy_network_dict[
                         key
                     ] * tau + target_network_dict[key] * (1 - tau)
